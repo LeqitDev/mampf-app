@@ -14,7 +14,7 @@ class SnackCard extends StatelessWidget {
       ),
       child: SizedBox(
         width: getScreenWidth(context, percentage: 0.82),
-        height: getScreenHeight(context, percentage: 0.1),
+        height: getScreenHeight(context, percentage: 0.15),
         child: Row(
           children: [
             paddingVertical(3),

@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:application/models/server_model.dart';
 import 'package:application/providers/api.dart';
 import 'package:application/providers/secure_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 part 'app_store.g.dart';
 
@@ -45,6 +46,12 @@ abstract class _AppStoreBase with Store {
   @observable
   bool serverFetched = false;
 
+  @observable
+  bool _reload = false;
+
+  @computed
+  bool get reload => _reload;
+
   @action
   Future fetchServers() async {
     serverFetched = false;
@@ -66,6 +73,14 @@ abstract class _AppStoreBase with Store {
   }
 
   // Others
+  @action
+  Future reloadView() async {
+    _reload = true;
+    Future.delayed(const Duration(milliseconds: 10), () {
+      _reload = false;
+    });
+  }
+
   addReaction<T>(T Function(Reaction) fn, void Function(T) effect) {
     return reaction(fn, effect);
   }

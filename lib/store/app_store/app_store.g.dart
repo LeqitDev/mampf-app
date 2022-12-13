@@ -29,6 +29,12 @@ mixin _$AppStore on _AppStoreBase, Store {
       (_$serversComputed ??= Computed<List<Server>>(() => super.servers,
               name: '_AppStoreBase.servers'))
           .value;
+  Computed<bool>? _$reloadComputed;
+
+  @override
+  bool get reload => (_$reloadComputed ??=
+          Computed<bool>(() => super.reload, name: '_AppStoreBase.reload'))
+      .value;
 
   late final _$devAtom = Atom(name: '_AppStoreBase.dev', context: context);
 
@@ -61,6 +67,22 @@ mixin _$AppStore on _AppStoreBase, Store {
     });
   }
 
+  late final _$_reloadAtom =
+      Atom(name: '_AppStoreBase._reload', context: context);
+
+  @override
+  bool get _reload {
+    _$_reloadAtom.reportRead();
+    return super._reload;
+  }
+
+  @override
+  set _reload(bool value) {
+    _$_reloadAtom.reportWrite(value, super._reload, () {
+      super._reload = value;
+    });
+  }
+
   late final _$stateAtom = Atom(name: '_AppStoreBase.state', context: context);
 
   @override
@@ -82,6 +104,14 @@ mixin _$AppStore on _AppStoreBase, Store {
   @override
   Future<dynamic> fetchServers() {
     return _$fetchServersAsyncAction.run(() => super.fetchServers());
+  }
+
+  late final _$reloadViewAsyncAction =
+      AsyncAction('_AppStoreBase.reloadView', context: context);
+
+  @override
+  Future<dynamic> reloadView() {
+    return _$reloadViewAsyncAction.run(() => super.reloadView());
   }
 
   late final _$_AppStoreBaseActionController =
@@ -117,7 +147,8 @@ serverFetched: ${serverFetched},
 state: ${state},
 secureStorage: ${secureStorage},
 api: ${api},
-servers: ${servers}
+servers: ${servers},
+reload: ${reload}
     ''';
   }
 }

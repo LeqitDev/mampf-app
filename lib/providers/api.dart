@@ -17,7 +17,7 @@ class APIResponse<T> {
 class API {
   // final pb = PocketBase('http://10.0.2.2:8090/');
   // var pb = PocketBase('http://127.0.0.1:8090');
-  var pb = PocketBase('http://server.cc-web.cloud/');
+  var pb = PocketBase('http://mampf.cc-web.cloud/');
   bool ready = false;
   User? user;
 
@@ -45,7 +45,7 @@ class API {
           value.record!.getStringValue("name"),
           value.record!.getStringValue("username"));
 
-      await loadUserData(user);
+      await loadUserData(user!);
       loadLunchData();
       // loadSnackData();
 
@@ -69,7 +69,7 @@ class API {
     return list;
   }
 
-  Future<void> loadUserData(user) async {
+  Future<void> loadUserData(User user) async {
     await pb
         .collection("credits")
         .getFirstListItem('user = "${user.id}"')
@@ -83,18 +83,22 @@ class API {
         .getFullList(filter: 'user = "${user.id}"')
         .then((value) => _parsePurchases(value))
         .onError((error, stackTrace) => print("Purchases: $error"));
+    user.purchases!.addAll([
+      Purchase("Käsebrötchen", "snack", 1.40, 10.0, "12.01.2023"),
+      Purchase("Guthaben", "credits", 10.0, 10.0, "11.12.2022"),
+      Purchase("Pizza", "snack", 2.20, 10.0, "9.12.2022"),
+      Purchase("Pizza", "snack", 2.20, 10.0, "9.12.2022"),
+    ]);
   }
 
   Future<void> loadLunchData() async {
     var now = DateTime.now();
     var nextDay = now.add(const Duration(days: 1));
-    print(
-        'created >= "${getDatabaseDate(now)}" && created < "${getDatabaseDate(nextDay)}"');
     await pb
         .collection("lunches")
         .getFullList(
             filter:
-                'created >= "${getDatabaseDate(now)}" && created < "${getDatabaseDate(nextDay)}"')
+                'date >= "${getDatabaseDate(now)}" && created < "${getDatabaseDate(nextDay)}"')
         .then((value) {
       _parseLunches(value);
     }).onError((error, stackTrace) {
@@ -170,13 +174,13 @@ class API {
         order_ids.where((element) => !exclude.contains(element)).toList();
     int order_id = order_ids[Random().nextInt(order_ids.length)];
 
-    await pb.collection("lunch_orders").create(
-      body: <String, dynamic>{
+    /* await pb.collection("lunch_orders").create(
+      {
         "user": user!.id,
         "lunch": lunch.id,
         "order_id": order_id,
       },
-    );
+    ); */
   }
 
   Future<double> getCurrentBalance() async {

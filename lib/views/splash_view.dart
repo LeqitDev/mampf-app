@@ -27,6 +27,7 @@ class _SplashViewState extends ConsumerState<SplashView>
 
   getServers() async {
     final _appStore = ref.read(appStore);
+    // await _appStore.secureStorage.eraseAll();
 
     var url = await _appStore.secureStorage.getURL();
     var username = await _appStore.secureStorage.getUsername();
@@ -53,6 +54,8 @@ class _SplashViewState extends ConsumerState<SplashView>
         } else {
           print("${ret.responseMessage} (${ret.responseCode})");
         }
+      }).onError((error, stackTrace) {
+        print("Error");
       });
     } else {
       await _appStore.api.init().then((value) {

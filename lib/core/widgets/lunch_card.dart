@@ -1,5 +1,6 @@
 import 'package:application/core/utils.dart';
 import 'package:application/models/lunch_model.dart';
+import 'package:application/models/purchase_model.dart';
 import 'package:application/store/app_store/app_store.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class LunchCard extends StatelessWidget {
       ),
       child: SizedBox(
         width: getScreenWidth(context, percentage: 0.82),
-        height: getScreenHeight(context, percentage: 0.15),
+        height: getScreenHeight(context, percentage: 0.21),
         child: Row(
           children: [
             paddingVertical(3),
@@ -71,6 +72,20 @@ class LunchCard extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       appStore.api.orderLunch(lunch);
+                      var reversedList = appStore.api.user!.purchases!.reversed
+                          .toList()
+                        ..add(Purchase(
+                            lunch.description,
+                            "lunch",
+                            lunch.price,
+                            lunch.price,
+                            getPurchaseHistorieDate(DateTime.now())));
+                      appStore.api.user!.purchases =
+                          reversedList.reversed.toList();
+
+                      appStore.api.user!.balance =
+                          appStore.api.user!.balance! - lunch.price;
+                      appStore.reloadView();
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(

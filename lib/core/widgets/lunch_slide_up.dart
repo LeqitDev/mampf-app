@@ -26,7 +26,7 @@ class LunchSlideUp extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: getScreenHeight(context, percentage: 0.13),
+            height: getScreenHeight(context, percentage: 0.15),
             decoration: BoxDecoration(
               color: getColor(ColorPalette.dark),
               borderRadius: const BorderRadius.only(
@@ -48,9 +48,9 @@ class LunchSlideUp extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  paddingHorizontal(1),
+                  paddingHorizontal(0.5),
                   Text(
-                    "Mittwoch, 13.12.",
+                    "Dienstag, 13.12.",
                     style: TextStyle(
                       color: getColor(ColorPalette.lightGreen),
                       fontSize: 25,
@@ -93,7 +93,6 @@ class LunchSlideUp extends StatelessWidget {
               ),
             ),
           ),
-          paddingHorizontal(8),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(

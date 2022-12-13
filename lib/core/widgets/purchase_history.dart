@@ -31,7 +31,7 @@ class PurchaseHistory extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 50.0),
                 child: Column(
                   children: [
-                    for (var purchase in purchases)
+                    for (var purchase in purchases.getRange(0, 3))
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

@@ -49,6 +49,13 @@ String getDatabaseDate(DateTime time) {
   return "$year-$month-$day";
 }
 
+String getPurchaseHistorieDate(DateTime time) {
+  String year = time.year.toString();
+  String month = time.month.toString();
+  String day = time.day.toString();
+  return "$day.$month.$year";
+}
+
 paddingHorizontal(double x) {
   return Padding(padding: EdgeInsets.only(top: 5.0 * x));
 }

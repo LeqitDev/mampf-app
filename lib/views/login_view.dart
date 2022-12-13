@@ -46,6 +46,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
   Widget build(BuildContext context) {
     final _appStore = ref.read(appStore);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFD8FFF0),
       body: Column(
         children: [
@@ -85,9 +86,12 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         _data.url = _appStore.servers[newIndex].api;
                       },
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 150.0),
+                    Expanded(
+                      child: Container(),
                     ),
+                    // const Padding(
+                    //   padding: EdgeInsets.only(top: 150.0),
+                    // ),
                     const Center(
                       child: Text(
                         'Login',
@@ -211,9 +215,12 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 50.0),
+                    Expanded(
+                      child: Container(),
                     ),
+                    // const Padding(
+                    //   padding: EdgeInsets.only(bottom: 50.0),
+                    // ),
                   ],
                 ),
               ),
