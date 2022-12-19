@@ -42,6 +42,8 @@ final currencyFormat = NumberFormat.currency(
     decimalDigits: 2,
     customPattern: "#,##0.00\u00A0€");
 
+final errorCodeFormat = NumberFormat("0000");
+
 String getDatabaseDate(DateTime time) {
   String year = time.year.toString();
   String month = time.month.toString();
@@ -65,6 +67,22 @@ paddingVertical(double x) {
 paddingHorizontal(double x) {
   return Padding(padding: EdgeInsets.only(left: 5.0 * x));
 }
+
+errorSnackbar(int code) {
+  return SnackBar(
+    content: Text(
+      "Ein Fehler ist aufgetreten! Bitte versuche es in einem Moment erneut oder wende dich an den Administrator. (Code: ${errorCodeFormat.format(code)})",
+      softWrap: true,
+    ),
+    duration: const Duration(seconds: 2),
+  );
+}
+
+final List<IconData> icons = [
+  Icons.restaurant_menu,
+  Icons.cookie,
+  Icons.attach_money
+];
 
 // Specific
 

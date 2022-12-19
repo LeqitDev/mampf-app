@@ -9,7 +9,7 @@ class User {
   double? balance;
   List<Purchase>? purchases;
   List<Lunch>? lunches;
-  List<LunchOrder>? lunchOrders;
+  List<LunchOrder> lunchOrders = [];
 
   User(this.id, this.name, this.username);
 }

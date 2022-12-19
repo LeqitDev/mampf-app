@@ -1,5 +1,6 @@
 import 'package:application/core/utils.dart';
 import 'package:application/models/lunch_model.dart';
+import 'package:application/models/lunch_order_model.dart';
 import 'package:application/models/purchase_model.dart';
 import 'package:application/store/app_store/app_store.dart';
 import 'package:flutter/material.dart';
@@ -70,8 +71,8 @@ class LunchCard extends StatelessWidget {
                   ),
                   paddingVertical(1),
                   ElevatedButton(
-                    onPressed: () {
-                      appStore.api.orderLunch(lunch);
+                    onPressed: () async {
+                      var lunchOrder = await appStore.api.orderLunch(lunch);
                       var reversedList = appStore.api.user!.purchases!.reversed
                           .toList()
                         ..add(Purchase(
@@ -82,6 +83,8 @@ class LunchCard extends StatelessWidget {
                             getPurchaseHistorieDate(DateTime.now())));
                       appStore.api.user!.purchases =
                           reversedList.reversed.toList();
+
+                      appStore.api.user!.lunchOrders.add(lunchOrder);
 
                       appStore.api.user!.balance =
                           appStore.api.user!.balance! - lunch.price;

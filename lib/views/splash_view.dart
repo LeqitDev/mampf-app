@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:application/core/utils.dart';
 import 'package:application/main.dart';
 import 'package:application/store/app_store/app_store.dart';
@@ -41,48 +43,52 @@ class _SplashViewState extends ConsumerState<SplashView>
     _appStore.updateSplashLoading(2);
 
     if (url != null && username != null && password != null) {
-      await _appStore.api.init().then((value) async {
-        if (value.responseCode == 0) {
-          await _appStore.fetchServers();
+      try {
+        await _appStore.api.init().then((value) async {
+          if (value.responseCode == 0) {
+            await _appStore.fetchServers();
 
-          // Loading State 2
-          _appStore.updateSplashLoading(3);
+            // Loading State 2
+            _appStore.updateSplashLoading(3);
 
-          await _appStore.api
-              .connectToMampfServer(url, username, password)
-              .then((ret) async {
-            if (ret.responseCode == 0) {
-              _serverConnected = true;
-              _blendColor = getColor(ColorPalette.dark);
+            await _appStore.api
+                .connectToMampfServer(url, username, password)
+                .then((ret) async {
+              if (ret.responseCode == 0) {
+                _serverConnected = true;
+                _blendColor = getColor(ColorPalette.dark);
 
-              // Loading State 3 (Full)
-              _appStore.updateSplashLoading(4);
+                // Loading State 3 (Full)
+                _appStore.updateSplashLoading(4);
 
-              Future.delayed(
-                const Duration(milliseconds: 500),
-                () {
-                  animationController.forward();
-                  Future.delayed(
-                      const Duration(milliseconds: 500),
-                      () => _appStore
-                          .changeAuthenticationState(AuthState.authenticated));
-                },
-              );
-              // _appStore.changeAuthenticationState(AuthState.authenticated);
-            } else {
+                Future.delayed(
+                  const Duration(milliseconds: 500),
+                  () {
+                    animationController.forward();
+                    Future.delayed(
+                        const Duration(milliseconds: 500),
+                        () => _appStore.changeAuthenticationState(
+                            AuthState.authenticated));
+                  },
+                );
+                // _appStore.changeAuthenticationState(AuthState.authenticated);
+              } else {
+                //TODO: Error handling
+                print("${ret.responseMessage} (${ret.responseCode})");
+              }
+            }).onError((error, stackTrace) {
               //TODO: Error handling
-              print("${ret.responseMessage} (${ret.responseCode})");
-            }
-          }).onError((error, stackTrace) {
+              print("Error");
+            });
+          } else {
             //TODO: Error handling
-            print("Error");
-          });
-        } else {
-          //TODO: Error handling
-          print(
-              "${value.responseMessage} (${value.responseCode}) | Couldnt load the server lists");
-        }
-      });
+            print(
+                "${value.responseMessage} (${value.responseCode}) | Couldnt load the server lists");
+          }
+        });
+      } on SocketException {
+        ScaffoldMessenger.of(context).showSnackBar(errorSnackbar(1));
+      }
     } else {
       await _appStore.api.init().then((value) {
         if (value.responseCode == 0) {

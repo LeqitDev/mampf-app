@@ -9,12 +9,6 @@ class PurchaseHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<IconData> icons = [
-      Icons.restaurant_menu,
-      Icons.cookie,
-      Icons.attach_money
-    ];
-
     return SizedBox(
       width: double.infinity,
       child: Card(

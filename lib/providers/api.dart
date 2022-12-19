@@ -17,7 +17,8 @@ class APIResponse<T> {
 class API {
   // final pb = PocketBase('http://10.0.2.2:8090/');
   // var pb = PocketBase('http://127.0.0.1:8090');
-  var pb = PocketBase('http://mampf.cc-web.cloud/');
+  var pb = PocketBase(
+      'http://mampf.cc-web.cloud/'); //TODO: dont forget to add the d at the end
   bool ready = false;
   User? user;
 
@@ -162,7 +163,7 @@ class API {
     user!.lunchOrders = _lunchOrders;
   }
 
-  Future<void> orderLunch(Lunch lunch) async {
+  Future<LunchOrder> orderLunch(Lunch lunch) async {
     var order_ids = Iterable.generate(301, (x) => x).toList();
     var exclude = <int>[];
     await pb.collection("lunch_orders").getFullList().then((value) {
@@ -181,6 +182,8 @@ class API {
         "order_id": order_id,
       },
     ); */
+    return LunchOrder(lunch.id, lunch.url, lunch.name, lunch.description,
+        lunch.price, order_id);
   }
 
   Future<double> getCurrentBalance() async {

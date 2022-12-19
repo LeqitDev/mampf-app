@@ -95,6 +95,9 @@ class _MainViewState extends ConsumerState<MainView> {
                               ),
                             ],
                           ),
+                          if (_appStore.api.user!.lunchOrders.isNotEmpty)
+                            for (var widget in getLunchOrders(_appStore))
+                              widget,
                           paddingVertical(5),
                           SizedBox(
                             width: double.infinity,
@@ -176,5 +179,81 @@ class _MainViewState extends ConsumerState<MainView> {
         maxHeight: getScreenHeight(context, percentage: 0.84),
       ),
     );
+  }
+
+  getLunchOrders(AppStore _appStore) {
+    return <Widget>[
+      paddingVertical(5),
+      SizedBox(
+        width: double.infinity,
+        child: Card(
+          elevation: 5,
+          color: getColor(ColorPalette.lightGreen),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+            child: Column(
+              children: [
+                for (var lunchOrder in _appStore.api.user!.lunchOrders)
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: getColor(ColorPalette.black),
+                            borderRadius: BorderRadius.circular(50.0),
+                          ),
+                          child: Icon(
+                            icons[categorieToIndex("lunch")],
+                            color: getColor(ColorPalette.lightGreen),
+                            size: 25,
+                          ),
+                        ),
+                        paddingHorizontal(2),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                errorCodeFormat.format(lunchOrder.orderId),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                lunchOrder.description,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        paddingHorizontal(2),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              getColor(ColorPalette.green),
+                            ),
+                          ),
+                          child: Text(
+                            "Anzeigen",
+                            style:
+                                TextStyle(color: getColor(ColorPalette.black)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ];
   }
 }
