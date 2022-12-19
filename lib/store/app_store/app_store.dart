@@ -72,6 +72,30 @@ abstract class _AppStoreBase with Store {
     state = newState;
   }
 
+  // Loading
+  @observable
+  double splashLoading = 0.0;
+
+  @action
+  void updateSplashLoading(int step) {
+    switch (step) {
+      case 1:
+        splashLoading = 0.1;
+        break;
+      case 2:
+        splashLoading = 0.3;
+        break;
+      case 3:
+        splashLoading = 0.6;
+        break;
+      case 4:
+        splashLoading = 1;
+        break;
+      default:
+        splashLoading = 0;
+    }
+  }
+
   // Others
   @action
   Future reloadView() async {

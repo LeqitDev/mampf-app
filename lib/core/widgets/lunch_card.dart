@@ -16,11 +16,11 @@ class LunchCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: SizedBox(
-        width: getScreenWidth(context, percentage: 0.82),
+        width: getScreenWidth(context, percentage: cardWidth),
         height: getScreenHeight(context, percentage: 0.21),
         child: Row(
           children: [
-            paddingVertical(3),
+            paddingHorizontal(3),
             Container(
               width: 110,
               height: 110,
@@ -32,17 +32,17 @@ class LunchCard extends StatelessWidget {
                 child: Image.network(lunch.url),
               ),
             ),
-            paddingVertical(3),
+            paddingHorizontal(3),
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  paddingHorizontal(2.5),
+                  paddingVertical(2.5),
                   Row(
                     children: [
                       Text(lunch.name),
-                      paddingVertical(2),
+                      paddingHorizontal(2),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6.0),
@@ -61,14 +61,14 @@ class LunchCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  paddingHorizontal(1),
+                  paddingVertical(1),
                   Text(
                     lunch.description,
                     softWrap: true,
                     style: const TextStyle(
                         fontSize: 18, fontWeight: FontWeight.w700),
                   ),
-                  paddingHorizontal(1),
+                  paddingVertical(1),
                   ElevatedButton(
                     onPressed: () {
                       appStore.api.orderLunch(lunch);
@@ -99,11 +99,11 @@ class LunchCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  paddingHorizontal(2.5),
+                  paddingVertical(2.5),
                 ],
               ),
             ),
-            paddingVertical(2),
+            paddingHorizontal(2),
           ],
         ),
       ),

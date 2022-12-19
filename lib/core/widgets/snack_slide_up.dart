@@ -17,7 +17,7 @@ class SnackSlideUp extends StatelessWidget {
             0.6,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -25,7 +25,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -33,7 +33,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -41,7 +41,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -49,7 +49,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -57,7 +57,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -65,7 +65,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -73,7 +73,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -81,7 +81,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -89,7 +89,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -97,7 +97,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -105,7 +105,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -113,7 +113,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -121,7 +121,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -129,7 +129,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -137,7 +137,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -145,7 +145,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -153,7 +153,7 @@ class SnackSlideUp extends StatelessWidget {
             2.5,
             10),
       ),
-      paddingHorizontal(2),
+      paddingVertical(2),
       SnackCard(
         Snack(
             "http://192.168.178.103:90/api/files/xpyen9w9jq3zax7/93hqzfwj7q8k231/happy_hippo_pAnr1k1SXu.png",
@@ -196,11 +196,11 @@ class SnackSlideUp extends StatelessWidget {
               ),
             ),
           ),
-          paddingHorizontal(8),
+          paddingVertical(4),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: getScreenWidth(context, percentage: 0.09),
+                horizontal: getScreenWidth(context, percentage: 0.05),
               ),
               child: ListView.builder(
                 controller: controller,
@@ -212,7 +212,7 @@ class SnackSlideUp extends StatelessWidget {
               ),
             ),
           ),
-          paddingHorizontal(4),
+          paddingVertical(4),
         ],
       ),
     );

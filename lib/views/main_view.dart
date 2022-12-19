@@ -37,130 +37,134 @@ class _MainViewState extends ConsumerState<MainView> {
     return Scaffold(
       backgroundColor: getColor(ColorPalette.dark),
       body: SlidingUpPanel(
-        body: SingleChildScrollView(
-          child: Observer(
-            builder: (context) {
-              if (_appStore.reload == true) {
-                return Container();
-              } else {
-                return Center(
-                  child: SizedBox(
-                    width: getScreenWidth(context, percentage: 0.82),
-                    child: Column(
-                      children: [
-                        paddingHorizontal(2),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: RichText(
-                                  text: TextSpan(
-                                    text: "Hallo, ",
-                                    style: TextStyle(
-                                      fontFamily: "Caveat",
-                                      color: getColor(ColorPalette.lightGreen),
-                                      fontSize: 34.0,
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: "Markus",
-                                        style: TextStyle(
-                                          fontFamily: "Alexandria",
-                                          color: getColor(ColorPalette.white),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 28.0,
-                                        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Observer(
+              builder: (context) {
+                if (_appStore.reload == true) {
+                  return Container();
+                } else {
+                  return Center(
+                    child: SizedBox(
+                      width: getScreenWidth(context, percentage: cardWidth),
+                      child: Column(
+                        children: [
+                          paddingVertical(2),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: RichText(
+                                    text: TextSpan(
+                                      text: "Hallo, ",
+                                      style: TextStyle(
+                                        fontFamily: "Caveat",
+                                        color:
+                                            getColor(ColorPalette.lightGreen),
+                                        fontSize: 34.0,
                                       ),
-                                    ],
+                                      children: [
+                                        TextSpan(
+                                          text: "Markus",
+                                          style: TextStyle(
+                                            fontFamily: "Alexandria",
+                                            color: getColor(ColorPalette.white),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 28.0,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            IconButton(
-                              onPressed: () async {
-                                // logout later settings
-                                await _appStore.secureStorage.eraseAll();
-                                _appStore.changeAuthenticationState(
-                                    AuthState.unauthenticated);
-                              },
-                              icon: Icon(
-                                Icons.settings,
-                                color: getColor(ColorPalette.green),
-                                size: 32.0,
+                              IconButton(
+                                onPressed: () async {
+                                  // logout later settings
+                                  await _appStore.secureStorage.eraseAll();
+                                  _appStore.changeAuthenticationState(
+                                      AuthState.unauthenticated);
+                                },
+                                icon: Icon(
+                                  Icons.settings,
+                                  color: getColor(ColorPalette.green),
+                                  size: 32.0,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        paddingHorizontal(5),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Card(
-                            elevation: 5,
-                            color: getColor(ColorPalette.black),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: Column(
-                              children: [
-                                paddingHorizontal(5.0),
-                                Text(
-                                  "Dein Guthaben",
-                                  style: TextStyle(
-                                    color: getColor(ColorPalette.lightGreen),
-                                    fontSize: 32.0,
+                            ],
+                          ),
+                          paddingVertical(5),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Card(
+                              elevation: 5,
+                              color: getColor(ColorPalette.black),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  paddingVertical(5.0),
+                                  Text(
+                                    "Dein Guthaben",
+                                    style: TextStyle(
+                                      color: getColor(ColorPalette.lightGreen),
+                                      fontSize: 32.0,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  currencyFormat
-                                      .format(_appStore.api.user!.balance),
-                                  style: TextStyle(
-                                    color: getColor(ColorPalette.white),
-                                    fontSize: 64.0,
+                                  Text(
+                                    currencyFormat
+                                        .format(_appStore.api.user!.balance),
+                                    style: TextStyle(
+                                      color: getColor(ColorPalette.white),
+                                      fontSize: 64.0,
+                                    ),
                                   ),
-                                ),
-                                paddingHorizontal(7.0),
-                              ],
+                                  paddingVertical(7.0),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        paddingHorizontal(5),
-                        FastActionCard(
-                          actions: <FastAction>[
-                            FastAction(() {
-                              setState(() {
-                                _slideUpWidget = (sc) {
-                                  return LunchSlideUp(
-                                      _appStore.api.user!.lunches ?? [],
-                                      sc,
-                                      _appStore);
-                                };
-                                panelController.open();
-                              });
-                            }, "Mittagessen bestellen", Icons.restaurant_menu),
-                            FastAction(() {
-                              setState(() {
-                                _slideUpWidget = (sc) {
-                                  return SnackSlideUp(sc);
-                                };
-                                panelController.open();
-                              });
-                            }, "Snack kaufen", Icons.cookie),
-                            FastAction(
-                                () {}, "Guthaben aufladen", Icons.attach_money),
-                          ],
-                        ),
-                        paddingHorizontal(5),
-                        PurchaseHistory(
-                          purchases: _appStore.api.user!.purchases!,
-                        ),
-                      ],
+                          paddingVertical(5),
+                          FastActionCard(
+                            actions: <FastAction>[
+                              FastAction(() {
+                                setState(() {
+                                  _slideUpWidget = (sc) {
+                                    return LunchSlideUp(
+                                        _appStore.api.user!.lunches ?? [],
+                                        sc,
+                                        _appStore);
+                                  };
+                                  panelController.open();
+                                });
+                              }, "Mittagessen bestellen",
+                                  Icons.restaurant_menu),
+                              FastAction(() {
+                                setState(() {
+                                  _slideUpWidget = (sc) {
+                                    return SnackSlideUp(sc);
+                                  };
+                                  panelController.open();
+                                });
+                              }, "Snack kaufen", Icons.cookie),
+                              FastAction(() {}, "Guthaben aufladen",
+                                  Icons.attach_money),
+                            ],
+                          ),
+                          paddingVertical(5),
+                          PurchaseHistory(
+                            purchases: _appStore.api.user!.purchases!,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }
-            },
+                  );
+                }
+              },
+            ),
           ),
         ),
         panelBuilder: (sc) => _slideUpWidget(sc),

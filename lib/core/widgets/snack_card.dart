@@ -13,11 +13,11 @@ class SnackCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: SizedBox(
-        width: getScreenWidth(context, percentage: 0.82),
+        width: getScreenWidth(context, percentage: cardWidth),
         height: getScreenHeight(context, percentage: 0.15),
         child: Row(
           children: [
-            paddingVertical(3),
+            paddingHorizontal(3),
             SizedBox(
               width: 60,
               height: 60,
@@ -26,14 +26,14 @@ class SnackCard extends StatelessWidget {
                 child: Image.network(snack.url),
               ),
             ),
-            paddingVertical(3),
+            paddingHorizontal(3),
             Flexible(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 // mainAxisSize: MainAxisSize.min,
                 children: [
-                  paddingHorizontal(2),
+                  paddingVertical(2),
                   Row(
                     children: [
                       Expanded(
@@ -60,7 +60,7 @@ class SnackCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      paddingVertical(3),
+                      paddingHorizontal(3),
                     ],
                   ),
                   ElevatedButton(
@@ -77,7 +77,7 @@ class SnackCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  paddingHorizontal(2),
+                  paddingVertical(2),
                 ],
               ),
             ),

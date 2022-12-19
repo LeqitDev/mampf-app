@@ -98,6 +98,22 @@ mixin _$AppStore on _AppStoreBase, Store {
     });
   }
 
+  late final _$splashLoadingAtom =
+      Atom(name: '_AppStoreBase.splashLoading', context: context);
+
+  @override
+  double get splashLoading {
+    _$splashLoadingAtom.reportRead();
+    return super.splashLoading;
+  }
+
+  @override
+  set splashLoading(double value) {
+    _$splashLoadingAtom.reportWrite(value, super.splashLoading, () {
+      super.splashLoading = value;
+    });
+  }
+
   late final _$fetchServersAsyncAction =
       AsyncAction('_AppStoreBase.fetchServers', context: context);
 
@@ -140,11 +156,23 @@ mixin _$AppStore on _AppStoreBase, Store {
   }
 
   @override
+  void updateSplashLoading(int step) {
+    final _$actionInfo = _$_AppStoreBaseActionController.startAction(
+        name: '_AppStoreBase.updateSplashLoading');
+    try {
+      return super.updateSplashLoading(step);
+    } finally {
+      _$_AppStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 dev: ${dev},
 serverFetched: ${serverFetched},
 state: ${state},
+splashLoading: ${splashLoading},
 secureStorage: ${secureStorage},
 api: ${api},
 servers: ${servers},

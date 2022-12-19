@@ -56,11 +56,13 @@ String getPurchaseHistorieDate(DateTime time) {
   return "$day.$month.$year";
 }
 
-paddingHorizontal(double x) {
+const cardWidth = 0.9;
+
+paddingVertical(double x) {
   return Padding(padding: EdgeInsets.only(top: 5.0 * x));
 }
 
-paddingVertical(double x) {
+paddingHorizontal(double x) {
   return Padding(padding: EdgeInsets.only(left: 5.0 * x));
 }
 

@@ -48,7 +48,7 @@ class LunchSlideUp extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  paddingHorizontal(0.5),
+                  paddingVertical(0.5),
                   Text(
                     "Dienstag, 13.12.",
                     style: TextStyle(
@@ -61,7 +61,7 @@ class LunchSlideUp extends StatelessWidget {
               ),
             ),
           ),
-          paddingHorizontal(4),
+          paddingVertical(4),
           GestureDetector(
             onTap: () {},
             child: Card(
@@ -70,17 +70,17 @@ class LunchSlideUp extends StatelessWidget {
               ),
               color: getColor(ColorPalette.green),
               child: SizedBox(
-                width: getScreenWidth(context, percentage: 0.82),
+                width: getScreenWidth(context, percentage: cardWidth),
                 height: getScreenHeight(context, percentage: 0.04),
                 child: Row(
                   children: [
-                    paddingVertical(2),
+                    paddingHorizontal(2),
                     Icon(
                       Icons.calendar_month,
                       color: getColor(ColorPalette.black),
                       size: 25,
                     ),
-                    paddingVertical(2),
+                    paddingHorizontal(2),
                     Text(
                       "Tag ändern",
                       style: TextStyle(
@@ -96,7 +96,7 @@ class LunchSlideUp extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: getScreenWidth(context, percentage: 0.09),
+                horizontal: getScreenWidth(context, percentage: 0.05),
               ),
               child: ListView.builder(
                 controller: controller,
@@ -106,14 +106,14 @@ class LunchSlideUp extends StatelessWidget {
                   return Column(
                     children: [
                       LunchCard(lunches[index], appStore),
-                      paddingHorizontal(2)
+                      paddingVertical(2)
                     ],
                   );
                 },
               ),
             ),
           ),
-          paddingHorizontal(2),
+          paddingVertical(2),
         ],
       ),
     );

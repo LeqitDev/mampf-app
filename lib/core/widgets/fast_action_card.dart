@@ -43,7 +43,7 @@ class FastActionCard extends StatelessWidget {
                             color: getColor(ColorPalette.black),
                           ),
                         ),
-                        paddingHorizontal(2.0),
+                        paddingVertical(2.0),
                         Text(
                           action.title,
                           textAlign: TextAlign.center,

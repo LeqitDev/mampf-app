@@ -47,7 +47,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
     final _appStore = ref.read(appStore);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: const Color(0xFFD8FFF0),
+      backgroundColor: getColor(ColorPalette.lightGreen),
       body: Column(
         children: [
           const Padding(
@@ -73,7 +73,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   color: const Color(0xFF161825),
                   borderRadius: BorderRadius.circular(50.0),
                 ),
-                width: getScreenWidth(context, percentage: 0.82),
+                width: getScreenWidth(context, percentage: cardWidth),
                 child: Column(
                   children: [
                     const Padding(
@@ -185,11 +185,21 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                 _formKey.currentState!.save();
 
                                 setState(() {
-                                  _buttonWidget = LottieBuilder.network(
-                                    "https://lottie.host/dddb2625-ab03-40b7-b53d-7da798d7d7a6/p1L2EOAd06.json",
-                                    repeat: true,
-                                    animate: true,
+                                  _buttonWidget = Center(
+                                    child: SizedBox(
+                                      width: 35.0,
+                                      height: 35.0,
+                                      child: CircularProgressIndicator(
+                                        color: getColor(ColorPalette.black),
+                                        strokeWidth: 3.0,
+                                      ),
+                                    ),
                                   );
+                                  // _buttonWidget = LottieBuilder.network(
+                                  //   "https://lottie.host/dddb2625-ab03-40b7-b53d-7da798d7d7a6/p1L2EOAd06.json",
+                                  //   repeat: true,
+                                  //   animate: true,
+                                  // );
                                 });
 
                                 await _appStore.secureStorage

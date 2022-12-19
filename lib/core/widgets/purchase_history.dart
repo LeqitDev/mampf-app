@@ -50,16 +50,16 @@ class PurchaseHistory extends StatelessWidget {
                                   size: 25,
                                 ),
                               ),
-                              paddingHorizontal(1),
+                              paddingVertical(1),
                               Container(
                                 height: 25.0,
                                 width: 2.0,
                                 color: getColor(ColorPalette.black),
                               ),
-                              paddingHorizontal(1),
+                              paddingVertical(1),
                             ],
                           ),
-                          paddingVertical(2),
+                          paddingHorizontal(2),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +89,7 @@ class PurchaseHistory extends StatelessWidget {
                   ],
                 ),
               ),
-              paddingHorizontal(2),
+              paddingVertical(2),
               GestureDetector(
                 onTap: () {},
                 child: Container(
